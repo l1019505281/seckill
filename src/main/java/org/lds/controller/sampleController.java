@@ -11,6 +11,7 @@ public class sampleController {
     public String thymeleaf(Model model)
     {
         model.addAttribute("name","lds");
+        model.addAttribute("password","lds");
         return "hello";
     }
 }
