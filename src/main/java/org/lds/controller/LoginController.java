@@ -3,6 +3,8 @@ package org.lds.controller;
 import org.lds.pojo.SeckillUser;
 import org.lds.pojo.vo.LoginVo;
 import org.lds.redis.RedisService;
+import org.lds.result.CodeMsg;
+import org.lds.result.Result;
 import org.lds.service.SeckillUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 
 @Controller
@@ -33,12 +36,12 @@ public class LoginController {
 
     @RequestMapping("/do_login")
     @ResponseBody
-    public String doLogin(HttpServletResponse response, LoginVo loginVo) {
+    public Result<Boolean> doLogin(HttpServletResponse response,@Valid LoginVo loginVo) {
         log.info(loginVo.toString());
         //登录
-        boolean login = userService.login(response, loginVo);
-        System.out.println(login);
-        return "msg";
+        CodeMsg login = userService.login(response, loginVo);
+        if(login.getCode()==0)return Result.success(true);
+        else return Result.error(login);
     }
 }
 
