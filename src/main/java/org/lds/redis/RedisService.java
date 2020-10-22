@@ -14,12 +14,15 @@ public class RedisService {
     JedisPool jedisPool;
     @Autowired
     RedisConfig redisConfig;
+
     /**
-     * 获取当个对象
-     * */
-    /**
-     * 获取当个对象
-     * */
+     *
+     * @param prefix key的前缀
+     * @param key   key的值
+     * @param clazz 想要获得的值的class类型，redis中返回的json转换成对象
+     * @param <T>
+     * @return
+     */
     public <T> T get(KeyPrefix prefix, String key,  Class<T> clazz) {
         Jedis jedis = null;
         try {
@@ -35,8 +38,13 @@ public class RedisService {
     }
 
     /**
-     * 设置对象
-     * */
+     *
+     * @param prefix key的前缀
+     * @param key   key的值
+     * @param value 值，可以是对象，因为函数里面可以将对象转为json格式
+     * @param <T>
+     * @return
+     */
     public <T> boolean set(KeyPrefix prefix, String key,  T value) {
         Jedis jedis = null;
         try {

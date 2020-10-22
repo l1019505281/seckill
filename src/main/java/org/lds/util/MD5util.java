@@ -1,4 +1,4 @@
-package MD5util;
+package org.lds.util;
 
 import org.apache.commons.codec.digest.DigestUtils;
 

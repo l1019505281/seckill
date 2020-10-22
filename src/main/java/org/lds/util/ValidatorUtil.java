@@ -1,4 +1,4 @@
-package MD5util;
+package org.lds.util;
 
 
 import org.thymeleaf.util.StringUtils;

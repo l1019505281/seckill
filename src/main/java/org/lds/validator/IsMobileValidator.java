@@ -1,6 +1,6 @@
 package org.lds.validator;
 
-import MD5util.ValidatorUtil;
+import org.lds.util.ValidatorUtil;
 import org.thymeleaf.util.StringUtils;
 
 import javax.validation.ConstraintValidator;

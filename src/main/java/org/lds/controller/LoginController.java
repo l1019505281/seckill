@@ -29,6 +29,8 @@ public class LoginController {
     @Autowired
     RedisService redisService;
 
+//    @Autowired
+//    SeckillUserService seckillUserService;
     @RequestMapping("/to_login")
     public String toLogin() {
         return "login";
@@ -39,9 +41,9 @@ public class LoginController {
     public Result<Boolean> doLogin(HttpServletResponse response,@Valid LoginVo loginVo) {
         log.info(loginVo.toString());
         //登录
-        CodeMsg login = userService.login(response, loginVo);
-        if(login.getCode()==0)return Result.success(true);
-        else return Result.error(login);
+        userService.login(response, loginVo);
+
+        return Result.success(true);
     }
 }
 
